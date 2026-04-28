@@ -1,4 +1,4 @@
-# QgisPortAgent
+# QGIS-MCP-VScode from QgisPortAgent
 
 A VS Code GitHub Copilot agent ecosystem for **QGIS 3.44 LTR** to control QGIS3 remotely via MCP, all without leaving your editor.
 
