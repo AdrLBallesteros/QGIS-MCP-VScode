@@ -21,7 +21,7 @@ Windows Command Prompt:
 
 ```cmd
 git clone https://github.com/AdrLBallesteros/QGIS-MCP-VScode.git
-cd QGIS-MCP-VScode-main
+cd QGIS-MCP-VScode
 setup.cmd
 ```
 
@@ -84,7 +84,7 @@ To use the agents in this repository effectively, users should have the followin
 When you open this workspace in VS Code, you will automatically be prompted to install all recommended extensions.
 They are defined in `.vscode/extensions.json`. The key ones are listed below.
 
-| Extension | Purpose | Required? |
+| Extension | Purpose | Required |
 | --- | --- | --- |
 | GitHub Copilot Chat| AI engine that drives all agents | **Required** |
 | Python | Syntax, linting, virtual-env picker | **Required** |
@@ -119,49 +119,6 @@ VS Code (Copilot Agent Mode)
 ```
 
 The default `qgis` MCP flow is fully local. VS Code launches the workspace MCP server, and the MCP server connects to the QGIS plugin over `localhost:9876`.
-
-### Quick Start — MCP
-
-Before the first prompt, open **MCP: List Servers** in VS Code and confirm the `qgis` server is trusted and running.
-
-### Available MCP Tools (23)
-
-| Category | Tool | Description |
-|---|---|---|
-| **Connection** | `ping` | Check connectivity |
-| | `get_qgis_info` | QGIS version, profile, plugin count |
-| **Project** | `load_project` | Load a .qgz / .qgs file |
-| | `create_new_project` | Create and save a new project |
-| | `get_project_info` | Project filename, CRS, layers |
-| | `save_project` | Save current project |
-| **Layers** | `add_vector_layer` | Add shapefile / GeoPackage / GeoJSON |
-| | `add_raster_layer` | Add GeoTIFF / other raster |
-| | `get_layers` | List all layers with metadata |
-| | `remove_layer` | Remove a layer by ID |
-| | `get_layer_features` | Get attributes + geometry (WKT) |
-| | `get_layer_fields` | Field schema + sample values |
-| **Styling** | `set_layer_style` | Apply QML or graduated renderer |
-| | `set_layer_labels` | Configure labeling |
-| **Canvas** | `zoom_to_layer` | Zoom to layer extent |
-| | `set_map_extent` | Set extent by coords or layer |
-| | `add_layer_to_group` | Move layer into tree group |
-| | `set_layer_visibility` | Toggle layer on/off |
-| **Processing** | `execute_processing` | Run any Processing algorithm |
-| | `get_processing_algorithms` | List algorithms + parameters |
-| **Export** | `render_map` | Render canvas to image |
-| | `export_print_layout` | Export to PDF/PNG via layout |
-| **Advanced** | `execute_code` | Run arbitrary PyQGIS code |
-
-### Workflow Prompts
-
-The MCP server includes reusable prompt templates:
-
-| Prompt | Description |
-|---|---|
-| `load_project` | Load a project, list layers, zoom to extent |
-| `dem_comparison` | Run DEM bathymetry review on paired DEMs |
-| `segment_streams` | Run stream segmenter batch pipeline |
-| `apply_graduated_style` | Apply graduated symbology to a numeric field |
 
 ## Troubleshooting
 
