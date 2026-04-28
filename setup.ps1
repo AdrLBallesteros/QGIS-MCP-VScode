@@ -31,10 +31,15 @@ $RepoRoot = $PSScriptRoot
 Write-Host "`n=== Step 1: Detect QGIS Python interpreter ===" -ForegroundColor Cyan
 
 $PythonCandidates = @(
-    "C:\OSGeo4W\apps\Python312\python.exe",
-    "C:\Program Files\QGIS 3.44\apps\Python312\python.exe",
-    "C:\Program Files\QGIS 3.44.0\apps\Python312\python.exe"
+    "C:\OSGeo4W\apps\Python312\python.exe"
 )
+
+# Dynamically discover any QGIS installation under Program Files
+$QgisDirs = Get-ChildItem "C:\Program Files" -Filter "QGIS*" -Directory -ErrorAction SilentlyContinue |
+    Sort-Object Name -Descending  # prefer newer versions first
+foreach ($dir in $QgisDirs) {
+    $PythonCandidates += Join-Path $dir.FullName "apps\Python312\python.exe"
+}
 
 # Also try registry
 $RegPaths = @(
